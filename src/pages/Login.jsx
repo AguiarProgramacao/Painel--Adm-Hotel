@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null); // Para exibir erros de autenticação
-  const [loading, setLoading] = useState(false); // Indicador de carregamento
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const API_URL = 'http://192.168.0.107:5000/api/users/login'; // Ajuste a rota conforme necessário
+  const API_URL = 'http://192.168.0.108:5000/api/users/login';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,10 +18,8 @@ const AdminLogin = () => {
       const response = await axios.post(API_URL, { email, password });
       const { token } = response.data;
 
-      // Salva o token no localStorage
       localStorage.setItem('token', token);
 
-      // Decodificar o token para verificar se o role é "admin"
       const [, payload] = token.split('.');
       const decodedPayload = JSON.parse(atob(payload));
       if (decodedPayload.role !== 'admin') {
@@ -29,7 +27,7 @@ const AdminLogin = () => {
       }
 
       alert('Login bem-sucedido!');
-      window.location.href = '/admin/dashboard'; // Redireciona para o painel do administrador
+      window.location.href = '/admin/dashboard';
     } catch (err) {
       console.error('Erro ao fazer login:', err);
       setError('Credenciais inválidas ou acesso não autorizado.');
@@ -99,7 +97,7 @@ const styles = {
     marginBottom: '1rem',
   },
   input: {
-    width: '100%',
+    width: '93%',
     padding: '0.8rem',
     borderRadius: '4px',
     border: '1px solid #ccc',

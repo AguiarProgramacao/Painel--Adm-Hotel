@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import './Reports.css';
 
 const Payments = () => {
   const [bookings, setBookings] = useState([]);
@@ -8,12 +9,11 @@ const Payments = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Buscar reservas pendentes de pagamento
   const fetchBookings = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.get('/bookings'); // Certifique-se de que essa rota retorna as reservas
+      const response = await api.get('/bookings');
       setBookings(response.data);
     } catch (err) {
       setError('Erro ao buscar reservas.');
@@ -23,12 +23,11 @@ const Payments = () => {
     }
   };
 
-  // Iniciar pagamento com Stripe
   const handlePayment = async (booking_id) => {
     try {
       const response = await api.post('/payments/checkout', { booking_id });
       if (response.data.url) {
-        window.location.href = response.data.url; // Redireciona para o Stripe
+        window.location.href = response.data.url;
       }
     } catch (err) {
       console.error('Erro ao iniciar pagamento:', err);
@@ -44,9 +43,9 @@ const Payments = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h1>Pagamentos</h1>
-      <table>
+    <div className='container'>
+      <h1 className='title'>Pagamentos</h1>
+      <table className='table'>
         <thead>
           <tr>
             <th>ID</th>

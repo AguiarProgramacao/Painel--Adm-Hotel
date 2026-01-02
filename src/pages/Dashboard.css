@@ -1,0 +1,63 @@
+/* Estilos para o Dashboard */
+.dashboard-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.dashboard-title {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dashboard-subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.dashboard-grid {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.dashboard-box {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 10px;
+  width: 25%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dashboard-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.dashboard-chart-title {
+  text-align: center;
+  color: #34495e;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.dashboard-chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-chart-box {
+  width: 30%;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
